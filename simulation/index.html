@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="CEA LIST" /><link rel="canonical" href="https://labuche91.github.io/VPSim/simulation/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Simulation - VPSim</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Simulation";
+        var mkdocs_page_input_path = "simulation.md";
+        var mkdocs_page_url = "/VPSim/simulation/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> VPSim
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../VPSim/">Introduction</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Simulation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#models">Models</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#launching-a-simulation">Launching a simulation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#benchmarking">Benchmarking</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ending-a-simulation">Ending a simulation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../uml/">UML</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../UserDocumentation/">User Documentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ExpertDocumentation/">Developer Documentation</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">VPSim</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Getting Started</li>
+      <li class="breadcrumb-item active">Simulation</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="simulation">Simulation</h1>
+<p>If you have entirely installed VPSim, you can now launch simulations. To do so, i will explain a few things you need to know before starting.</p>
+<h2 id="models">Models</h2>
+<p>In the <strong>Release</strong> directory you will find a <code>GPP</code> directory. This directory contains a python file descriptor of the model of General Purpose Processors (GPP) that will be used for the simulation.
+This file is called <code>gpp.py</code>. You can modify this file to change the model of the GPP. For futher information, there is a README file in the <code>GPP</code> directory.</p>
+<h2 id="launching-a-simulation">Launching a simulation</h2>
+<p>To launch a simulation, you juste have to run the <code>gpp.py</code> file:</p>
+<pre><code class="language-bash">python3 gpp.py
+</code></pre>
+<p>Then login as <code>root</code> with no password.
+You will then be able to access the simulated system.</p>
+<h2 id="benchmarking">Benchmarking</h2>
+<p>To benchmark the system, you can use the <code>sesam</code> tool.
+To use it during the simulation, you can type:</p>
+<pre><code class="language-bash">sesam benchmark ./[my_program]
+</code></pre>
+<p>Where <code>[my_program]</code> is the program you want to benchmark.
+This will run the program and give you the results of the benchmark in a .log file located in the <code>/bin/.EPI_GPP_VP[date]--[uniqId]</code> directory of the release.</p>
+<h2 id="ending-a-simulation">Ending a simulation</h2>
+<p>To end the simulation, juste type:</p>
+<pre><code class="language-bash">sesam quit
+</code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>You now know how to launch a simulation with VPSim. You can start exploring the design space of your architecture and validate your design choices.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../installation/" class="btn btn-neutral float-left" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../uml/" class="btn btn-neutral float-right" title="UML">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>© Copyright 2024, CEA LIST</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../installation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../uml/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

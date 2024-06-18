@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="CEA LIST" /><link rel="canonical" href="https://labuche91.github.io/VPSim/installation/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Installation - VPSim</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Installation";
+        var mkdocs_page_input_path = "installation.md";
+        var mkdocs_page_url = "/VPSim/installation/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> VPSim
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../VPSim/">Introduction</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Installation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#demo-package-contents">Demo Package Contents</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#clone-build">Clone &amp; Build</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configure">Configure</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#getting-to-know-more-about-vpsim">Getting to know more about VPSim</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#getting-to-test-vpsim-and-run-your-first-simulation">Getting to test VPSim and run your first simulation</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../simulation/">Simulation</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../uml/">UML</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../UserDocumentation/">User Documentation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ExpertDocumentation/">Developer Documentation</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">VPSim</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Getting Started</li>
+      <li class="breadcrumb-item active">Installation</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="installation">Installation</h1>
+<h2 id="demo-package-contents">Demo Package Contents</h2>
+<ul>
+<li><strong>bin (/bin):</strong> Contains vpsim binary. After each simulation run, a specific folder is created here with files &amp; results of the simulated architecture.</li>
+<li><strong>lib (/lib):</strong> holds the modified qemu library (<code>./qemu/vpsim-qemu.so</code>)</li>
+<li><strong>GPP (/GPP):</strong> Contains configuration python scripts as well as linux kernel and disk image. Configure and simulate a multi-core ARMv8 system running a minimal operating system.</li>
+<li><strong>Python (/Python):</strong> <ul>
+<li><code>Platforms/armv8_platform.py</code>: gives a versatile, generic ARMv8 System script that generates and configures its components based on a higher-level description. In order to abstract away for the user the whole work of composition.</li>
+<li><code>Libs/dt.py</code>: generates the Device Tree to automate the process of configuring hardware components for the simulated architecture.</li>
+<li><code>Libs/vpsim.py</code>: generates the final <code>xml</code> of the simulated architecture.</li>
+</ul>
+</li>
+<li><strong>SESAM userspace (/SESAM_userspace)</strong>: source code for a user space software tool used to control over the simulator for monitoring purposes and collect statistics following the execution of a specific user application and makes it possible to perform an entire exploration task.</li>
+</ul>
+<h2 id="clone-build">Clone &amp; Build</h2>
+<ol>
+<li>Clone this git repository and update its submodules:</li>
+</ol>
+<pre><code class="language-bash">    git clone git@github.com:CEA-LIST/VPSim.git
+    cd vpsim
+    git submodule init
+    git submodule update --recursive
+</code></pre>
+<ol>
+<li>
+<p>Build targets and copy artifacts to the release directory <a href="./vpsim-release">./vpsim-release</a> sub-directory:</p>
+<p>to do so, we configured a custom command in CMakeLists that rename and copy the targets to the appropriate folder in the release test environment</p>
+</li>
+</ol>
+<pre><code class="language-bash">    mkdir build &amp;&amp; cd build
+    cmake ..
+    make all -j
+    cd ../
+</code></pre>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>You will need to install <code>dtc</code> device tree compiler:</li>
+</ul>
+<pre><code class="language-bash">apt install device-tree-compiler
+</code></pre>
+<ul>
+<li>To build VPSim &amp; the modified QEMU on a fresh Ubuntu 22.04 LTS installation, you will need to install these libraries:</li>
+</ul>
+<pre><code class="language-bash">    apt install pkg-config
+    apt install libglib2.0-dev
+    apt install libpixman-1-dev
+</code></pre>
+<ul>
+<li>For the modified qemu, as it is based on an old version you will need Python2 to be installed :</li>
+</ul>
+<pre><code class="language-bash">    apt install python2
+</code></pre>
+<p>and export it in your shell:</p>
+<pre><code class="language-bash">    export PYTHON=/usr/bin/python2
+</code></pre>
+<p>Now your environment is set, please follow the following steps:</p>
+<h2 id="configure">Configure</h2>
+<p>Once you realized the steps in the parent README, you can verify the existence of these two main targets as follows:
+ - <code>vpsim</code> -&gt; "vpsim_release/bin/"
+ - <code>qemu-system-aarch64</code> renamed to <code>vpsim-qemu.so</code> -&gt; "vpsim_release/lib/qemu/"</p>
+<ol>
+<li>Configure environment variables by sourcing the (<code>setup.sh</code>) script:</li>
+</ol>
+<pre><code class="language-sh">    source setup.sh
+</code></pre>
+<pre><code>- **NOTE**: This command must be run in the root directory of VPSim release.
+- **NOTE**: The disk image `busybox.qcow2` will be unzipped if not already done in the convenient path.
+- **NOTE**: An environment variable named `$VPSIM_HOME` will be set to point to the root directory of VPSim.
+- **NOTE**: `setup.sh` will not modify your `~/.bashrc`. You need to re-source `setup.sh` each time you change the terminal.
+</code></pre>
+<h2 id="getting-started">Getting Started</h2>
+<ol>
+<li>Move to (<code>/GPP</code>) directory and check your configuration file. Now you are good to run your first simulation:</li>
+</ol>
+<pre><code class="language-sh">    python3 gpp.py
+</code></pre>
+<ul>
+<li>This should boot the Busybox Linux on an ARMv8 system with internet connectivity.</li>
+<li>Login as <code>root</code> (no password).</li>
+<li>To end the simulation, enter the following command in your simulated userspace:</li>
+</ul>
+<pre><code class="language-sh">    sesam quit
+</code></pre>
+<ul>
+<li>Dive in <code>gpp.py</code> to see how to customize your own architecture</li>
+</ul>
+<h2 id="getting-to-know-more-about-vpsim">Getting to know more about VPSim</h2>
+<ul>
+<li>To have an idea of what you can do with VPSim, please follow the <code>README.md</code> file in the following sub-directory:</li>
+<li><code>/GPP</code></li>
+</ul>
+<h2 id="getting-to-test-vpsim-and-run-your-first-simulation">Getting to test VPSim and run your first simulation</h2>
+<ul>
+<li>To try VPSim and customize your architecture to simulate, please refer to the <a href="../simulation/">Simulation</a> section.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../VPSim/" class="btn btn-neutral float-left" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../simulation/" class="btn btn-neutral float-right" title="Simulation">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>© Copyright 2024, CEA LIST</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../VPSim/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../simulation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
